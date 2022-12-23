@@ -5,15 +5,24 @@ import {useEffect} from "react"
 
 function App() {
   useEffect(() => {
+    const reqController = new AbortController()
     const url = 'https://api.artic.edu/api/v1/artworks?limit=100'
 
     async function fetchPics() {
-      const response = await fetch(url)
-      const artworks_data = await response.json()
-      const pics_url = artworks_data.data.map(artwork => `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`)
-      console.log(pics_url)
+      try {
+        const response = await fetch(url, { signal: reqController.signal })
+        const artworks_data = await response.json()
+        const pics_url = artworks_data.data.map(artwork => `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`)
+        console.log(pics_url)
+      }
+      catch {
+        console.log("Request cancelled")
+      }  
     }
     fetchPics()
+    return() => {
+      reqController.abort()
+    }
   }, [])
 
   return (
