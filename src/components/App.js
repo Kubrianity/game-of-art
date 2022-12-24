@@ -12,6 +12,7 @@ const initialState = {
   score: 0,
   remainingTime: 0,
   currentQuestion: null,
+  artworksData: [],
   picsCollection: [],
   fetchCount: 0
 }
@@ -27,6 +28,7 @@ function App() {
       try {
         const response = await fetch(url, { signal: reqController.signal })
         const artworks_data = await response.json()
+        dispatch({ type: "addToArtworksData", value: artworks_data.data })
         const pics_url = artworks_data.data.map(artwork => `https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`)
         dispatch({ type: "addToPicsCollection", value: pics_url })
       }
