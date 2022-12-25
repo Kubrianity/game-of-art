@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import {useEffect} from "react"
 import { useImmerReducer } from "use-immer"
 import reducer from '../reducers/reducer';
+import Button from "./Button"
+import Picture from './Picture';
 
 const initialState = {
   isPlaying: false,
@@ -45,6 +47,19 @@ function App() {
   return (
     <div className="App">
       <Header />
+      {state.currentQuestion && ( // Renders pictures
+        <div className = "container">
+          <div className = "row">
+          {state.currentQuestion.pictures.map((picture, index) => (
+              <Picture key = {index} style = {{backgroundImage: `url(${picture})`}}/>
+            )
+          )}
+          </div>
+        </div>
+      )}
+      {!state.isPlaying && Boolean(state.picsCollection.length) && !state.currentQuestion && ( // Renders button
+        <Button handleClick = {() => dispatch({ type: "startPlaying" })}/>
+      )} 
       <Footer />
     </div>
   );
