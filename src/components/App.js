@@ -6,6 +6,7 @@ import { useImmerReducer } from "use-immer"
 import reducer from '../reducers/reducer';
 import Button from "./Button"
 import Picture from './Picture';
+import Title from './Title'
 
 const initialState = {
   isPlaying: false,
@@ -47,8 +48,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {state.currentQuestion && ( // Renders pictures
+      {state.currentQuestion && ( // Renders title and pictures
         <div className = "container">
+          <Title title = {state.currentQuestion.title} />
           <div className = "row">
           {state.currentQuestion.pictures.map((picture, index) => (
               <Picture key = {index} style = {{backgroundImage: `url(${picture})`}}/>
