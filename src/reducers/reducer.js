@@ -14,7 +14,16 @@ export default function reducer(draft, action) {
 
     case "addToPicsCollection":
       draft.picsCollection = draft.picsCollection.concat(action.value)
-      return      
+      return
+
+    case "checkAnswer":
+      if(action.value == draft.currentQuestion.answer) {
+        draft.points++
+        draft.currentQuestion = generateQuestion()
+      }else {
+        draft.strikes++
+      }
+      return
   }
   function generateQuestion() {
     if (draft.currentQuestion) {
