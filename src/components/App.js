@@ -57,6 +57,9 @@ function App() {
           {[...Array(3 - state.strikes)].map((item, index) => ( // Renders icons based on counts of strikes
             <Icon key = {index} className = "text-warning" />
           ))}
+          {[...Array(state.strikes)].map((item, index) => (
+            <Icon key = {index} className = "text-secondary" />
+          ))}
           <Title title = {state.currentQuestion.title} />
           <div className = "row">
           {state.currentQuestion.pictures.map((picture, index) => (
