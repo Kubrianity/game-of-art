@@ -28,6 +28,14 @@ export default function reducer(draft, action) {
         }
       }
       return
+
+    case "countDown":
+      if(draft.remainingTime <= 0) {
+        draft.isPlaying = false
+      }else {
+        draft.remainingTime--
+      }
+      return
   }
   function generateQuestion() {
     if (draft.currentQuestion) {

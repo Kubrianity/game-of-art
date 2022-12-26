@@ -1,7 +1,7 @@
 import '../App.css'
 import Header from "./Header"
 import Footer from "./Footer"
-import {useEffect} from "react"
+import {useEffect, useRef} from "react"
 import { useImmerReducer } from "use-immer"
 import reducer from '../reducers/reducer'
 import Button from "./Button"
@@ -25,6 +25,7 @@ const initialState = {
 
 function App() {
   const [state, dispatch] = useImmerReducer(reducer, initialState)
+  const timer = useRef(null)
 
   useEffect(() => {
     const reqController = new AbortController()
@@ -47,6 +48,17 @@ function App() {
       reqController.abort()
     }
   }, [])
+
+  useEffect(() => {
+    if(state.isPlaying) {
+      timer.current = setInterval(() => {
+        dispatch({ type: "countDown"})
+      }, 1000)
+      return () => {
+        clearInterval(timer.current)
+      }
+    }
+  }, [state.isPlaying])
 
   return (
     <div className="App">
