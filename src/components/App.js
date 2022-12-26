@@ -1,14 +1,15 @@
-import '../App.css';
-import Header from "./Header";
-import Footer from "./Footer";
+import '../App.css'
+import Header from "./Header"
+import Footer from "./Footer"
 import {useEffect} from "react"
 import { useImmerReducer } from "use-immer"
-import reducer from '../reducers/reducer';
+import reducer from '../reducers/reducer'
 import Button from "./Button"
-import Picture from './Picture';
+import Picture from './Picture'
 import Title from './Title'
 import Timer from './Timer'
-import Icon from './Icon';
+import Icon from './Icon'
+import Result from './Result'
 
 const initialState = {
   isPlaying: false,
@@ -74,7 +75,10 @@ function App() {
       {!state.isPlaying && Boolean(state.picsCollection.length) && !state.currentQuestion && 
       ( // Renders button
         <Button handleClick = {() => dispatch({ type: "startPlaying" })}/>
-      )} 
+      )}
+      {(state.remainingTime <= 0 || state.strikes >= 3) && state.currentQuestion && (
+        <Result result = {(state.remainingTime <= 0 && 'Time is over') || (state.strikes >= 3 && 'You failed 3 times!')}/>
+      )}
       <Footer />
     </div>
   );
