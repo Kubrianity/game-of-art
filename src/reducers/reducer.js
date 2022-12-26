@@ -17,11 +17,15 @@ export default function reducer(draft, action) {
       return
 
     case "checkAnswer":
+      if(!draft.isPlaying) return
       if(action.value == draft.currentQuestion.answer) {
         draft.points++
         draft.currentQuestion = generateQuestion()
       }else {
         draft.strikes++
+        if(draft.strikes >= 3) {
+          draft.isPlaying = false
+        }
       }
       return
   }
