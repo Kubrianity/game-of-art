@@ -7,6 +7,8 @@ import reducer from '../reducers/reducer';
 import Button from "./Button"
 import Picture from './Picture';
 import Title from './Title'
+import Timer from './Timer'
+import Icon from './Icon';
 
 const initialState = {
   isPlaying: false,
@@ -50,7 +52,11 @@ function App() {
       <Header />
       {state.currentQuestion && 
       ( // Renders title and pictures
-        <div className = "container">
+       <div className = "container">
+          <Timer remainingTime = {state.remainingTime} />
+          {[...Array(3 - state.strikes)].map((item, index) => ( // Renders icons based on counts of strikes
+            <Icon key = {index} className = "text-warning" />
+          ))}
           <Title title = {state.currentQuestion.title} />
           <div className = "row">
           {state.currentQuestion.pictures.map((picture, index) => (
