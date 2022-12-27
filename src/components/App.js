@@ -89,7 +89,10 @@ function App() {
         <Button handleClick = {() => dispatch({ type: "startPlaying" })}/>
       )}
       {(state.remainingTime <= 0 || state.strikes >= 3) && state.currentQuestion && (
-        <Result result = {(state.remainingTime <= 0 && 'Time is over') || (state.strikes >= 3 && 'You failed 3 times!')}/>
+        <Result 
+          result = {(state.remainingTime <= 0 && 'Time is over') || (state.strikes >= 3 && 'You failed 3 times!')}
+          handleClick = {() => dispatch({ type: "startPlaying" })}
+          />
       )}
       <Footer />
     </div>
