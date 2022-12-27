@@ -59,6 +59,15 @@ function App() {
       }
     }
   }, [state.isPlaying])
+  
+  // Preload images
+  useEffect(() => {
+    if(state.picsCollection.length) {
+      state.picsCollection.slice(0, 8).forEach(pic => {
+        new Image().src = pic
+      })
+    }
+  }, [state.picsCollection])
 
   return (
     <div className="App">
