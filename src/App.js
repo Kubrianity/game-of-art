@@ -1,15 +1,15 @@
-import '../App.css'
-import Header from "./Header"
-import Footer from "./Footer"
+import './App.css'
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 import {useEffect, useRef} from "react"
 import { useImmerReducer } from "use-immer"
-import reducer from '../reducers/reducer'
-import Button from "./Button"
-import Picture from './Picture'
-import Title from './Title'
-import Timer from './Timer'
-import Icon from './Icon'
-import Result from './Result'
+import reducer from './reducers/reducer'
+import Button from "./components/Button"
+import Picture from './components/Picture'
+import Title from './components/Title'
+import Timer from './components/Timer'
+import Icon from './components/Icon'
+import Result from './components/Result'
 
 const initialState = {
   isPlaying: false,
