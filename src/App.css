@@ -10,21 +10,68 @@ body {
   background: #eee;
   padding: 0 16px;
 }
-
 header {
   background-color: #3d4155;
   margin: auto -16px;
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
-
 header h1 {
   color: #fff;
   font-family: "McLaren", cursive;
   font-weight: 200;
   text-align: center;
 }
-
+.title {
+  text-align: center;
+  margin-top: 1em;
+}
+.picture {
+  width: 600px;
+  height: 600px;
+  margin: 0.50em;
+}
+.timer {
+  text-align: center;
+  font-weight: 400;
+  font-size: 1.5em;
+  margin: 0.25em;
+}
+svg {
+  display: inline-block;
+  margin: 0.25em;
+}
+figure {
+  text-align: center;
+}
+.score-container {
+  text-align: center;
+  max-width: 45em;
+}
+.score-info {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+body.result .display-result {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+} 
+.display-result {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, .82);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .33s ease-out;
+  transform: scale(1.2);
+}
 footer {
   position: absolute;
   text-align: center;
@@ -32,7 +79,6 @@ footer {
   width: 100%;
   height: 2.5rem;
 }
-
 footer p {
   color: #ccc;
 }

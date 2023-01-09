@@ -74,24 +74,26 @@ function App() {
       <Header />
       {state.currentQuestion && 
       ( // Renders title and pictures
-       <div className = "container">
-          <Timer remainingTime = {state.remainingTime} />
-          {[...Array(3 - state.strikes)].map((item, index) => ( // Renders icons based on counts of strikes
-            <Icon key = {index} className = "text-warning" />
-          ))}
-          {[...Array(state.strikes)].map((item, index) => (
-            <Icon key = {index} className = "text-secondary" />
-          ))}
+       <main className = "container">
           <Title title = {state.currentQuestion.title} />
-          <div className = "row">
+          <figure>
+            {[...Array(3 - state.strikes)].map((item, index) => ( // Renders icons based on counts of strikes
+              <Icon key = {index} className = "text-warning" />
+            ))}
+            {[...Array(state.strikes)].map((item, index) => (
+              <Icon key = {index} className = "text-secondary" />
+            ))}
+          </figure>
+          <Timer remainingTime = {state.remainingTime} />
+          <section className = "row">
           {state.currentQuestion.pictures.map((picture, index) => (
               <Picture key = {index}
               style = {{backgroundImage: `url(${picture})`}}
               handleClick = {() => dispatch({ type: "checkAnswer", value: index })}/>
             )
           )}
-          </div>
-        </div>
+          </section>
+        </main>
       )}
       {!state.isPlaying && Boolean(state.picsCollection.length) && !state.currentQuestion && 
       ( // Renders button
