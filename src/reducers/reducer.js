@@ -1,7 +1,7 @@
 export default function reducer(draft, action) {
   switch(action.type) {
     case "startPlaying":
-      draft.remainingTime = 30
+      draft.remainingTime = 59
       draft.points = 0
       draft.strikes = 0
       draft.isPlaying = true
