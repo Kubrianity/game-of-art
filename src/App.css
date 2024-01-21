@@ -10,6 +10,10 @@ body {
   background: #eee;
   padding: 0 16px;
 }
+.App h3 {
+  text-align: center;
+  margin: 1.5em;
+}
 header {
   background-color: #3d4155;
   margin: auto -16px;
@@ -27,9 +31,12 @@ header h1 {
   margin-top: 1em;
 }
 .picture {
-  width: 600px;
-  height: 600px;
-  margin: 0.50em;
+  display:block;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 .timer {
   text-align: center;
