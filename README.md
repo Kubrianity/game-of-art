@@ -1,6 +1,7 @@
 # game-of-art
-Game of art is a game for art lovers who like to try testing their knowledge about visual arts. <br>
-It was built with React.js and Bootstrap Css framework
+Game of Art is a game for art lovers who love to test their knowledge about visual arts. <br>
+It was built with React.js and Bootstrap CSS framework. <br><br>
+Link for this project is [here](https://game-of-art.onrender.com/)
 ## Installation
 Clone the repository <br>
 ```
